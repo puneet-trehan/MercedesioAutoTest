@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 public class MercedezAutoTest extends GenericMercedesTest {
 
     @Test
-    public void locateElement() throws InterruptedException {
+    public void dieselCarPrice() throws InterruptedException {
         setUpBrowser("chrome");
         selectModel();
         selectCarType();
