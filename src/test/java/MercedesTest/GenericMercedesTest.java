@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Duration;
@@ -15,44 +16,48 @@ import java.time.Duration;
 public class GenericMercedesTest extends BaseMercedesTest {
     JavascriptExecutor js;
 
+    // Method to select 'Our Models' button
+    public void selectModel() {
 
-    public void selectModel()  {
-
-        js= (JavascriptExecutor) driver;
-        WebElement ourModels=getElement(Locators.OUR_MODELS);
+        js = (JavascriptExecutor) driver;
+        WebElement ourModels = getElement(Locators.OUR_MODELS);
         ourModels.click();
 
     }
 
-    public void selectCarType(){
+    // Method to select the type of car
+    public void selectCarType() {
 
         WebElement hatchBackModel = getElement(Locators.HATCHBACK_MODEL);
         js.executeScript("arguments[0].scrollIntoView()", hatchBackModel);
         hatchBackModel.click();
     }
 
-    public void selectCarModel()  {
+    // Method to select the model of the car
+    public void selectCarModel() {
 
         WebElement aClassModel = getElement(Locators.A_CLASS_MODEL);
         aClassModel.click();
     }
 
-    public void buildCar()  {
+    // Method to click on the 'Build Car' button
+    public void buildCar() {
 
         WebElement buildCarButton = getElement(Locators.BUILD_CAR);
         buildCarButton.click();
     }
 
-
-    public void addFilter()  {
+    // Method to add a filter to the car model
+    public void addFilter() {
         //To move down the screen
         js.executeScript("window.scrollBy(0, 500)");
         WebElement fuelType = getElement(Locators.FUEL_TYPE);
         fuelType.click();
-
     }
-    public void filterFuelType() throws InterruptedException {
 
+    // Method to filter cars based on fuel type
+    public void filterFuelType() throws InterruptedException {
+        //To move down the screen
         js.executeScript("window.scrollBy(0, 500)");
 
         WebElement filterDieselCar = getElement(Locators.FILTER_DIESEL_CAR);
@@ -64,11 +69,10 @@ public class GenericMercedesTest extends BaseMercedesTest {
         js.executeScript("window.scrollBy(0, 500)");
         Thread.sleep(500);
         takeScreenCapture();
-
-
     }
 
-    public void priceResult(){
+    //Method to get the Price of the card printed in txt file
+    public void priceResult() {
 
         WebElement lowestPriceElemen = getElement(Locators.LOWEST_PRICE_DIESEL_CAR);
         String lowestPrice = lowestPriceElemen.getText();
@@ -86,9 +90,9 @@ public class GenericMercedesTest extends BaseMercedesTest {
         } catch (IOException e) {
             System.out.println("An error occurred while writing prices to file: " + e.getMessage());
         }
+    }
 
-        }
-
+    // Method to get a web element and wait based on the given locator
     public WebElement getElement(String locator) {
         try {
             Wait wait = new FluentWait(driver)
