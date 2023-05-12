@@ -2,7 +2,7 @@
 This is a Maven project that uses Selenium and TestNG for automated testing.
 
 **Prerequisites**
-1. Java Development Kit (JDK 8 and hire) installed
+1. Java Development Kit (JDK 8 and higher) installed
 2. Maven installed
 3. Latest Web browser (Chrome and Firefox)
 
